@@ -1,0 +1,13 @@
+{% extends 'faculty/base.html' %}
+{% block content %}
+<h1>Кафедри</h1>
+{% for d in departments %}
+  <div class="card">
+    <h3><a href="{% url 'department_detail' d.id %}">{{ d.name }}</a></h3>
+    <p>Завідувач: {{ d.head }}</p>
+    <p>Випускає спеціальності:
+      {% for p in d.programs.all %}{{ p.name }}{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %}
+    </p>
+  </div>
+{% endfor %}
+{% endblock %}
