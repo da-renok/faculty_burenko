@@ -1,0 +1,20 @@
+{% extends 'faculty/base.html' %}
+{% block content %}
+<h1>Програми обміну</h1>
+
+<p>Країна:
+  <a href="/exchange/">Усі</a>
+  {% for c in countries %} | <a href="?country={{ c }}">{{ c }}</a>{% endfor %}
+</p>
+
+{% for p in programs %}
+  <div class="card">
+    <h3>{{ p.university }}, {{ p.country }}</h3>
+    <p>Мови навчання: {{ p.languages }} · Місць: {{ p.seats }}</p>
+    <p>Дедлайн: {{ p.deadline|date:"d.m.Y" }}
+      {% if p.is_open %}<span class="open">Прийом триває</span>
+      {% else %}<span class="closed">Прийом завершено</span>{% endif %}</p>
+    <p>{{ p.description }}</p>
+  </div>
+{% endfor %}
+{% endblock %}

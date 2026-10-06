@@ -1,0 +1,11 @@
+{% extends 'faculty/base.html' %}
+{% block content %}
+  {% if info %}
+    <h1>{{ info.title }}</h1>
+    <div class="card">{{ info.text|linebreaks }}</div>
+    <h2>Контакти</h2>
+    <div class="card">{{ info.contacts|linebreaks }}</div>
+  {% else %}
+    <p>Текст головної сторінки додайте в адмінці.</p>
+  {% endif %}
+{% endblock %}
